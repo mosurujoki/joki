@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Styling CSS sebelumnya tetap digunakan... */
     :root {
       --bg: #f6f8f9;
       --card: #ffffff;
@@ -23,7 +24,7 @@
       --hover-bg: rgba(18, 185, 129, 0.1);
       --transition: 0.3s ease-in-out;
     }
-    
+
     * {
       box-sizing: border-box;
     }
@@ -221,6 +222,18 @@
       text-decoration: none;
     }
 
+    /* Scroll Animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .hero {
@@ -257,7 +270,7 @@
 
   <main class="wrap">
     <!-- Hero Section -->
-    <section class="hero" id="beranda">
+    <section class="hero animate-on-scroll" id="beranda">
       <div>
         <h1>Jasa Joki Tugas<br/>Mosuru Joki</h1>
         <p>Tugas menumpuk bikin emosi? Tenang. Ingat Mosuru Joki solusinya. Kami bantu urus makalah, laporan, jurnal, poster, sampai presentasi. Kamu fokus hidup, biar kami yang ngetik.</p>
@@ -277,7 +290,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="section" id="layanan">
+    <section class="section animate-on-scroll" id="layanan">
       <h2>Melayani</h2>
       <div class="services">
         <ul aria-label="Daftar layanan kiri">
@@ -302,7 +315,7 @@
     </section>
 
     <!-- CTA Banner -->
-    <section class="cta-banner" id="kontak">
+    <section class="cta-banner animate-on-scroll" id="kontak">
       <div class="cta-inner">
         <div>
           <h3>Siap dibantu sekarang?</h3>
@@ -321,7 +334,33 @@
   </footer>
 
   <script>
+    // Year for copyright
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Smooth Scroll Effect
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+    smoothScrollLinks.forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+
+    // Scroll Animation Effect
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    const scrollAnimation = () => {
+      elements.forEach(element => {
+        if (element.getBoundingClientRect().top <= window.innerHeight) {
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', scrollAnimation);
+    scrollAnimation();
   </script>
 </body>
 </html>
+
