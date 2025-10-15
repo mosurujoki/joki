@@ -8,103 +8,241 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f6f8f9; /* page */
-      --card:#ffffff; /* cards */
-      --ink:#20262e; /* headings */
-      --text:#4b5563; /* body */
-      --brand:#12b981; /* primary */
-      --brand-ink:#064e3b; /* deep green */
-      --muted:#d1d5db; /* borders */
-      --chip:#eef7f3; /* pills */
-      --accent:#0ea5e9; /* secondary */
+    :root {
+      --bg: #f6f8f9;
+      --card: #ffffff;
+      --ink: #20262e;
+      --text: #4b5563;
+      --brand: #12b981;
+      --brand-ink: #064e3b;
+      --muted: #d1d5db;
+      --chip: #eef7f3;
+      --accent: #0ea5e9;
       --shadow: 0 10px 30px rgba(16,24,40,.08);
       --radius: 18px;
+      --hover-bg: rgba(18, 185, 129, 0.1);
+      --transition: 0.3s ease-in-out;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
-    body{
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
       background: var(--bg);
-      line-height:1.6;
+      line-height: 1.6;
     }
-    .wrap{max-width:1200px;margin:0 auto;padding:24px}
 
-    /* Header */
-    header{
-      position:sticky;top:0;z-index:40;
-      background:rgba(246,248,249,.8);
-      backdrop-filter:saturate(180%) blur(12px);
-      border-bottom:1px solid var(--muted);
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
     }
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand i{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--chip);color:var(--brand)}
-    .brand strong{color:var(--ink);font-weight:800;font-size:20px}
-    .tagline{font-size:12px;color:var(--text);opacity:.8}
-    .hashtags{display:flex;gap:8px;flex-wrap:wrap}
-    .pill{background:var(--chip);color:var(--brand-ink);border:1px solid #c7efe0;padding:8px 12px;border-radius:999px;font-weight:600;font-size:12px}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:36px 0}
-    .hero h1{color:var(--ink);font-size:48px;line-height:1.1;margin:0 0 12px 0;letter-spacing:-.02em}
-    .hero p{font-size:18px;margin:0 0 20px 0}
-    .hero .cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:12px;font-weight:700;text-decoration:none}
-    .btn-primary{background:var(--brand);color:white;box-shadow:var(--shadow)}
-    .btn-outline{border:1.5px solid var(--muted);color:var(--ink);background:transparent}
-    .trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .trust .chip{background:var(--card);border:1px solid var(--muted);padding:8px 10px;border-radius:10px;font-size:12px}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(246,248,249,.8);
+      backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--muted);
+      padding: 20px 0;
+    }
 
-    .board{background:var(--card);border:1px solid var(--muted);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-    .board h3{margin:0 0 10px 0;color:var(--brand-ink)}
-    .board .big{font-weight:800;color:var(--ink);font-size:28px;line-height:1.25}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
 
-    .clock{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--muted);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .clock i{width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--chip);color:var(--brand);font-weight:900}
-    .clock b{display:block;color:var(--ink);font-size:22px}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
 
-    /* Services */
-    .section{padding:18px 0 36px}
-    .section h2{color:var(--ink);font-size:32px;margin:0 0 12px 0}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .brand i {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--chip);
+      color: var(--brand);
+      font-size: 20px;
+    }
 
-    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;background:var(--card);border:1px solid var(--muted);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .services ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
-    .services li{padding:10px 12px;border:1px dashed #d6e6df;border-radius:10px;background:#fbfefc}
+    .brand strong {
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 20px;
+    }
 
-    /* Badges row */
-    .badges{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
-    .badge{background:var(--chip);border:1px solid #c7efe0;color:var(--brand-ink);text-align:center;padding:12px;border-radius:12px;font-weight:700}
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 36px 0;
+      transition: var(--transition);
+    }
 
-    /* CTA Banner */
-    .cta-banner{margin:30px 0;background:linear-gradient(135deg, var(--brand) 0%, #10b3d6 100%);border-radius:22px;color:#fff;box-shadow:var(--shadow)}
-    .cta-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding:26px}
-    .cta-inner h3{margin:0;font-size:26px}
-    .cta-inner p{margin:0;opacity:.95}
-    .cta-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn-light{background:#fff;color:#0f172a}
+    .hero h1 {
+      color: var(--ink);
+      font-size: 48px;
+      line-height: 1.1;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
 
-    footer{padding:20px 0 30px;color:#6b7280}
-    footer a{color:inherit}
+    .hero p {
+      font-size: 18px;
+      margin: 0 0 20px;
+      color: var(--text);
+    }
+
+    .hero .cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-ink);
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--muted);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--muted);
+      transform: scale(1.05);
+    }
+
+    .clock {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--muted);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .clock i {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--chip);
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+    .clock b {
+      display: block;
+      color: var(--ink);
+      font-size: 22px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      background: var(--card);
+      border: 1px solid var(--muted);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .services ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .services li {
+      padding: 10px 12px;
+      border: 1px dashed #d6e6df;
+      border-radius: 10px;
+      background: #fbfefc;
+      transition: var(--transition);
+    }
+
+    .services li:hover {
+      background: var(--hover-bg);
+      transform: scale(1.03);
+    }
+
+    footer {
+      padding: 20px 0 30px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    footer a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     /* Responsive */
-    @media (max-width: 1024px){
-      .hero{grid-template-columns:1fr;}
-      .grid{grid-template-columns:1fr}
-      .services ul{grid-template-columns:1fr}
-      .badges{grid-template-columns:1fr 1fr 1fr}
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .services ul {
+        grid-template-columns: 1fr;
+      }
     }
-    @media (max-width: 560px){
-      .hero h1{font-size:36px}
-      .cta-inner{flex-direction:column;align-items:flex-start}
-      .badges{grid-template-columns:1fr 1fr}
+
+    @media (max-width: 560px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="wrap nav" aria-label="Navigasi utama">
       <a class="brand" href="#">
@@ -114,15 +252,11 @@
           <div class="tagline">Jasa Joki Tugas Profesional</div>
         </div>
       </a>
-      <div class="hashtags" aria-label="Tag promosi">
-        <span class="pill">#OptimalkanWaktumu</span>
-        <span class="pill">#MentalTerjaga</span>
-      </div>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero" id="beranda">
       <div>
         <h1>Jasa Joki Tugas<br/>Mosuru Joki</h1>
@@ -131,31 +265,18 @@
           <a class="btn btn-primary" href="https://wa.me/6285877553323" target="_blank" rel="noopener">Hubungi WhatsApp</a>
           <a class="btn btn-outline" href="#layanan">Lihat Layanan</a>
         </div>
-        <div class="trust" aria-label="Keunggulan">
-          <span class="chip">Tepat waktu</span>
-          <span class="chip">Harga terjangkau</span>
-          <span class="chip">Hasil berkualitas</span>
-          <span class="chip">Privasi terjamin</span>
-          <span class="chip">Aman terpercaya</span>
-        </div>
       </div>
 
-      <div class="grid" aria-label="Sorotan">
-        <div class="board" role="note">
-          <h3>Slogan</h3>
-          <div class="big">Tugas menumpuk bikin emosi? Ingat Mosuru Joki solusinya.</div>
-        </div>
-        <div class="clock">
-          <i aria-hidden="true">⏰</i>
-          <div>
-            <b>Admin stay 24/7</b>
-            <div>Respons cepat via WhatsApp @mosurujoki</div>
-          </div>
+      <div class="clock">
+        <i aria-hidden="true">⏰</i>
+        <div>
+          <b>Admin stay 24/7</b>
+          <div>Respons cepat via WhatsApp @mosurujoki</div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
+    <!-- Services Section -->
     <section class="section" id="layanan">
       <h2>Melayani</h2>
       <div class="services">
@@ -177,14 +298,6 @@
           <li>Poster</li>
           <li>Dan Lain Lain</li>
         </ul>
-      </div>
-
-      <div class="badges" aria-label="Nilai tambah">
-        <div class="badge">Tepat waktu</div>
-        <div class="badge">Harga terjangkau</div>
-        <div class="badge">Hasil berkualitas</div>
-        <div class="badge">Privasi terjamin</div>
-        <div class="badge">Aman terpercaya</div>
       </div>
     </section>
 
@@ -208,7 +321,6 @@
   </footer>
 
   <script>
-    // year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
